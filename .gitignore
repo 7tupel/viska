@@ -1,0 +1,11 @@
+# Clojure
+.nrepl-port
+.cpcache
+.clj-kondo/
+.babashka/
+
+# Tools
+.lsp/
+
+# Repo
+worktrees/

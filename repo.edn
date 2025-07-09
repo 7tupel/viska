@@ -1,0 +1,11 @@
+{:scm       {:type      :git
+             :trunk     "main"
+             :origin    "origin"
+             :url       "git@github.com:7tupel/viska.git"
+             :provider  {:name    :github 
+                         :repo    "viska",
+                         :owner   "7tupel"}}
+ :products
+ [{:root "viska/" :version "0.0.0" :key :viska :release-prefix "viska"}]
+ :bricks
+ []}
