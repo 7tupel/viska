@@ -1,0 +1,9 @@
+## CljoreScript
+.shadow-cljs/
+
+## Node
+node_modules/
+
+## Builds
+resources/app/public/js/
+resources/portfolio/public/js/

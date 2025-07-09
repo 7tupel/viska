@@ -1,0 +1,17 @@
+{:deps          {}
+ :dev-http      {8080       ["resources/app/public" "resources/public/css" "classpath:public"]
+                 8081       ["resources/portfolio/public" "resources/public/css" "classpath:public"]}
+ :builds
+ {:app          {:target    :browser
+                 :modules   {:main            {:init-fn viska.core/main}}
+                 :dev       {:output-dir      "resources/app/public/js"}}
+
+  :portfolio    {:target    :browser
+                 :modules   {:main            {:init-fn viska.scenes/main}}
+                 :dev       {:output-dir      "resources/portfolio/public/js"}}
+
+  ; :test         {:target    :node-test
+  ;                :output-to "resources/test/tests.js"
+  ;                :ns-regexp "-test$"
+  ;                :autorun   true}
+  }}
