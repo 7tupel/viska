@@ -1,48 +1,41 @@
 (ns brick.uitoken.impl)
 
 
-(defonce tokens (atom {}))
+(defonce tokens* (atom {}))
 
 
-(defn assoc-color
-  [m key value theme]
-  (if (some? theme)
-    (assoc-in m [key theme] value)
-    (assoc m key value)))
+(defn assoc-token
+  [m kind key value variant theme]
+  (assoc-in m [kind key variant theme] value))
+
+
+(defn- prefix-theme
+  [k]
+  (if (= (namespace k) :theme)
+    k
+    (keyword "theme" (name k))))
+
+(comment
+  (prefix-theme :theme/light) ; -> :theme/light
+  (prefix-theme :dark) ; -> :theme/dark
+  (prefix-theme "fail") ; -> throws
+  )
 
 (defn- color-token
-  [key value {:keys [theme variant] :or {variant :default}}]
-  (let [old-value (get-in @tokens [:color key variant])]
-    (cond
-      (not (map? old-value))
-      
-      )
-    )
-  (if (some? theme)
-    (swap! tokens assoc-in [:color key variant (keyword "theme" (name theme))] value)
-    (swap! tokens assoc-in [:color key variant]))
-  )
+  [key value {:keys [theme variant] :or {variant :default theme :theme/default}}]
+  (swap! tokens* assoc-token :color key value variant (prefix-theme theme)))
+
 
 (defn deftoken
   [kind key value & args]
   (case kind
-    :color (color-token key value args)))
+    :color (color-token key value args))
+  @tokens*)
 
 
-(deftoken :color :primary "#FF0000")
+(defn get-themed
+  [])
 
-(deftoken :color :primary "#FF0000" :theme :light)
-
-(deftoken :color :primary "#FF0000" :theme :dark :variant 600)
-
-
-{:color {:primary {:default "#FF0000"
-                   600      {:theme/dark  "value"
-                             :theme/light "value"}
-                   500      "#FF0000"}}}
-
-
-(update-in {} [:color :primary] assoc :default "#FF0000")
-
-
-
+(defn get-token
+  ([kind key]
+   (get-in @tokens [kind key :default])))
