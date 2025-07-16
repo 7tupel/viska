@@ -1,7 +1,7 @@
 (ns brick.uitoken.impl-test
   (:require 
    [lazytest.core :refer [defdescribe describe specify expect before after]]
-   [brick.uitoken.impl :refer [tokens* assoc-token deftoken]]))
+   [brick.uitoken.impl :refer [tokens* assoc-token deftoken get-color-token]]))
 
 (defdescribe assoc-token-test
   (describe assoc-token
@@ -26,15 +26,24 @@
 (defdescribe deftoken-test
   (describe deftoken
     (before (reset! tokens* {}))
-    (specify ""
+    (specify "Add a new color token, default theme, default variant."
       (expect
         (=
           {:color {:secondary {:default {:theme/default "pink"}}}}
-          (deftoken :color :secondary "pink")))
+          (deftoken :color :secondary "pink"))))
+    (specify "Add a newcolor token, default variant, dark theme."
       (expect
         (=
           {:color {:secondary {:default {:theme/default "pink" :theme/dark "lavender"}}}}
-          (deftoken :color :secondary "lavender" :theme :dark)))
-      )
-    (after (reset! tokens* {}))
-    ))
+          (deftoken :color :secondary "lavender" :theme :dark))))
+    (after (reset! tokens* {}))))
+
+
+
+(defdescribe get=color-token-test
+  (describe get-color-token
+    (specify ""
+      (expect 
+        (= 
+          "blue"
+          (get-color-token {:color {:blue {:default {:theme/default "blue"}}}} :blue))))))

@@ -36,6 +36,13 @@
 (defn get-themed
   [])
 
+
+(defn get-color-token
+  ([m key])
+  ([m key variant])
+  ([m key variant theme])
+  )
+
 (defn get-token
   ([kind key]
-   (get-in @tokens [kind key :default])))
+   (get-in @tokens* [kind key :default])))
