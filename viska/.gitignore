@@ -7,3 +7,4 @@ node_modules/
 ## Builds
 resources/app/public/js/
 resources/portfolio/public/js/
+resources/target/

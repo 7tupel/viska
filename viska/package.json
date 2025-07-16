@@ -1,5 +1,6 @@
 {
   "dependencies": {
+    "electron": "^37.2.2",
     "shadow-cljs": "3.1.7",
     "snabbdom": "3.5.1"
   }

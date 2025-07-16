@@ -1,11 +1,7 @@
-(ns user
+(ns cljs.user
   (:require
-   [clj-reload.core :as reload]
    [shadow.cljs.devtools.server :as shadow-server]
    [shadow.cljs.devtools.api :as shadow]))
-
-;; Setup reloading
-(reload/init {:no-reload '#{user}})
 
 ;; Run to setup everything required to begin development.
 (defn start
@@ -13,6 +9,7 @@
   []
   (shadow-server/start!)
   (shadow/watch :app)
+  (shadow/watch :app-ui)
   (shadow/watch :portfolio)
   ::started)
 
@@ -26,16 +23,6 @@
   []
   (stop)
   (start))
-
-
-;;; Utility functions for development
-
-(defn reload!
-  "Reload everything that has changed."
-  []
-  (reload/reload))
-
-
 
 
 ;;; Start Development

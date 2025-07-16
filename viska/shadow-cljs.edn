@@ -2,9 +2,13 @@
  :dev-http      {8080       ["resources/app/public" "resources/public/css" "classpath:public"]
                  8081       ["resources/portfolio/public" "resources/public/css" "classpath:public"]}
  :builds
- {:app          {:target    :browser
+ {:app-ui       {:target    :browser
                  :modules   {:main            {:init-fn viska.core/main}}
                  :dev       {:output-dir      "resources/app/public/js"}}
+  
+  :app          {:target      :npm-module
+                 :output-to   "resources/target/app.js"
+                 :main        viska.app/main}
 
   :portfolio    {:target    :browser
                  :modules   {:main            {:init-fn viska.scenes/main}}
