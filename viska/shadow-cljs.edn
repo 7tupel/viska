@@ -1,10 +1,10 @@
 {:deps          {}
- :dev-http      {8080       ["resources/ui/public" "resources/public/css" "classpath:public"]
-                 8081       ["resources/portfolio/public" "resources/public/css" "classpath:public"]}
+ :dev-http      {8080       ["resources/public" "classpath:public"]
+                 8081       ["resources/portfolio/public" "classpath:public"]}
  :builds
  {:ui           {:target      :esm
                  :runtime     :browser
-                 :output-dir  "resources/ui/public/js/compiled"
+                 :output-dir  "resources/public/ui/js/compiled"
                  :modules     {:ui {:exports {ui viska.ui/main}}}
                  ; :modules   {:main            {:entries [viska.core] 
                  ;                               :init-fn viska.core/main}}
@@ -13,7 +13,7 @@
                  }
   
   :app          {:target      :node-script
-                 :output-to   "resources/app/public/js/compiled/app.js"
+                 :output-to   "resources/public/app/js/compiled/app.js"
                  :main        viska.app/main
                  ;:externs     ["resources/app/public"]
                  ;:devtools    {:preloads [devtools.preload]}

@@ -15,7 +15,7 @@
                         :height 600
                         :webPreferences {:preload (.join path js/__dirname "../preload.js")}}))]
                         ;:webPreferences {:preload (.join path js/__dirname "../../../../ui/public/js/compiled/ui.js")}}))]
-    (.loadFile win "../../..ui/public/index.html")
+    (.loadFile win "../../../index.html")
     ))
 
 (defn topics-dir 
