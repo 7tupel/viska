@@ -13,9 +13,9 @@
   (let [win (BrowserWindow.
               (clj->js {:width 800
                         :height 600
-                        :webPreferences {:preload (.join path js/__dirname "../preload.js")}}))]
+                        :webPreferences {:preload (.join path js/__dirname "../preloads.js")}}))]
                         ;:webPreferences {:preload (.join path js/__dirname "../../../../ui/public/js/compiled/ui.js")}}))]
-    (.loadFile win "../../../index.html")
+    (.loadFile win "../../../app.html")
     ))
 
 (defn topics-dir 

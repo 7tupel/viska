@@ -6,10 +6,6 @@
                  :runtime     :browser
                  :output-dir  "resources/public/ui/js/compiled"
                  :modules     {:ui {:exports {ui viska.ui/main}}}
-                 ; :modules   {:main            {:entries [viska.core] 
-                 ;                               :init-fn viska.core/main}}
-                 ; :dev       {:compiler-options {:externs []}
-                 ;             :output-dir      "resources/app/public/js"}
                  }
   
   :app          {:target      :node-script
