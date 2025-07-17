@@ -3,12 +3,29 @@
                  8081       ["resources/portfolio/public" "resources/public/css" "classpath:public"]}
  :builds
  {:app-ui       {:target    :browser
-                 :modules   {:main            {:init-fn viska.core/main}}
-                 :dev       {:output-dir      "resources/app/public/js"}}
+                 :modules   {:main            {:entries [viska.core] 
+                                               :init-fn viska.core/main}}
+                 :dev       {:compiler-options {:externs []}
+                             :output-dir      "resources/app/public/js"}}
   
-  :app          {:target      :npm-module
-                 :output-to   "resources/target/app.js"
-                 :main        viska.app/main}
+  ; :app          {:target      :node-script
+  ;                :output-to   "resources/target/app.js"
+  ;                :main        viska.app/main
+  ;                :externs     ["resources/app/public"]
+  ;                :devtools    {:preloads [devtools.preload]}}
+  
+    :app          {:target      :npm-module
+                 :output-dir   "resources/app/public/js/compiled"
+                 :main        viska.app/main
+                   :runtime :node
+                 :externs     ["resources/app/public/js/externs.js"]
+                 :devtools    {:preloads [devtools.preload]}}
+  
+  ; :app          {:target      :npm-module
+  ;                :output-dir         "resources/target2/js"
+  ;                :runtime     :node
+  ;                :entries        [viska.app]}
+
 
   :portfolio    {:target    :browser
                  :modules   {:main            {:init-fn viska.scenes/main}}

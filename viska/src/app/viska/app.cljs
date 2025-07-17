@@ -19,7 +19,7 @@
 
 
 
-(defn main
+(defn ^:export main
   []
   (println "Hello World from App!")
   (let [store (atom {})]
