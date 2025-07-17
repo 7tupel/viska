@@ -2,31 +2,17 @@
  :dev-http      {8080       ["resources/public" "classpath:public"]
                  8081       ["resources/portfolio/public" "classpath:public"]}
  :builds
- {:ui           {:target      :esm
+ {:ui           {:target      :browser
                  :runtime     :browser
-                 :output-dir  "resources/public/ui/js/compiled"
-                 :modules     {:ui {:exports {ui viska.ui/main}}}
+                 :dev         {:output-dir  "resources/public/ui/js/compiled"}
+                 :asset-path  "js"
+                 :modules     {:ui          {:init-fn viska.ui/main}}
                  }
   
   :app          {:target      :node-script
                  :output-to   "resources/public/app/js/compiled/app.js"
-                 :main        viska.app/main
-                 ;:externs     ["resources/app/public"]
-                 ;:devtools    {:preloads [devtools.preload]}
-                 }
-  
-    ; :app          {:target        :npm-module
-    ;                :output-dir    "resources/app/public/js/compiled"
-    ;                :entries        [viska.app]
-    ;                }
+                 :main        viska.app/main}
 
-
-  :portfolio    {:target    :browser
-                 :modules   {:main            {:init-fn viska.scenes/main}}
-                 :dev       {:output-dir      "resources/portfolio/public/js"}}
-
-  ; :test         {:target    :node-test
-  ;                :output-to "resources/test/tests.js"
-  ;                :ns-regexp "-test$"
-  ;                :autorun   true}
-  }}
+  :portfolio    {:target      :browser
+                 :modules     {:main            {:init-fn viska.scenes/main}}
+                 :dev         {:output-dir      "resources/portfolio/public/js"}}}}
