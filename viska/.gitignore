@@ -5,6 +5,7 @@
 node_modules/
 
 ## Builds
+resources/ui/public/js/compiled
 resources/app/public/js/compiled
 resources/portfolio/public/js/
 resources/target/

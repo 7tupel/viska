@@ -1,4 +1,4 @@
-(ns viska.core
+(ns viska.ui
   (:require [replicant.dom :as r]))
 
 (defn main

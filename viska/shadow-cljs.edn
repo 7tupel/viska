@@ -1,30 +1,28 @@
 {:deps          {}
- :dev-http      {8080       ["resources/app/public" "resources/public/css" "classpath:public"]
+ :dev-http      {8080       ["resources/ui/public" "resources/public/css" "classpath:public"]
                  8081       ["resources/portfolio/public" "resources/public/css" "classpath:public"]}
  :builds
- {:app-ui       {:target    :browser
-                 :modules   {:main            {:entries [viska.core] 
-                                               :init-fn viska.core/main}}
-                 :dev       {:compiler-options {:externs []}
-                             :output-dir      "resources/app/public/js"}}
+ {:ui           {:target      :esm
+                 :runtime     :browser
+                 :output-dir  "resources/ui/public/js/compiled"
+                 :modules     {:ui {:exports {ui viska.ui/main}}}
+                 ; :modules   {:main            {:entries [viska.core] 
+                 ;                               :init-fn viska.core/main}}
+                 ; :dev       {:compiler-options {:externs []}
+                 ;             :output-dir      "resources/app/public/js"}
+                 }
   
-  ; :app          {:target      :node-script
-  ;                :output-to   "resources/target/app.js"
-  ;                :main        viska.app/main
-  ;                :externs     ["resources/app/public"]
-  ;                :devtools    {:preloads [devtools.preload]}}
-  
-    :app          {:target      :npm-module
-                 :output-dir   "resources/app/public/js/compiled"
+  :app          {:target      :node-script
+                 :output-to   "resources/app/public/js/compiled/app.js"
                  :main        viska.app/main
-                   :runtime :node
-                 :externs     ["resources/app/public/js/externs.js"]
-                 :devtools    {:preloads [devtools.preload]}}
+                 ;:externs     ["resources/app/public"]
+                 ;:devtools    {:preloads [devtools.preload]}
+                 }
   
-  ; :app          {:target      :npm-module
-  ;                :output-dir         "resources/target2/js"
-  ;                :runtime     :node
-  ;                :entries        [viska.app]}
+    ; :app          {:target        :npm-module
+    ;                :output-dir    "resources/app/public/js/compiled"
+    ;                :entries        [viska.app]
+    ;                }
 
 
   :portfolio    {:target    :browser

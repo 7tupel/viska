@@ -13,17 +13,38 @@
   (let [win (BrowserWindow.
               (clj->js {:width 800
                         :height 600
-                        :webPreferences {:preload (.join path js/__dirname "../app/public/js/main.js")}}))]
-    (.loadFile win "../app/public/index.html")))
+                        :webPreferences {:preload (.join path js/__dirname "../preload.js")}}))]
+                        ;:webPreferences {:preload (.join path js/__dirname "../../../../ui/public/js/compiled/ui.js")}}))]
+    (.loadFile win "../../..ui/public/index.html")
+    ))
+
+(defn topics-dir 
+  []
+  (.join path (.getPath app "userData") "topics"))
 
 
+(defn setup-api-handlers [store]
+  (.on ipcMain "chat/send-message"
+       (fn [event request-id messages]
+         (let [messages-clj (js->clj messages :keywordize-keys true)]
+           (println :event event :reqest-id request-id :messages messages-clj)
+           )))
+
+  ;; NOTE: Electron IPC handlers must return values. We're abusing Nexus effects to return values
+  ;; (not idiomatic) with nxr-result because I'd like to maintain FCIS architecture.
+  (.handle ipcMain "topic/save"
+          (fn [_event topic-data]
+            (println [:event _event :data topic-data])))
+
+  (.handle ipcMain "topic/load"
+           (fn [_event]
+             (println [:_event]))))
 
 
 (defn ^:export main
   []
-  (println "Hello World from App!")
   (let [store (atom {})]
-   ; (setup-api-handlers store)
+    (setup-api-handlers store)
     (-> (.whenReady app)
         (.then (fn []
                  (create-window)

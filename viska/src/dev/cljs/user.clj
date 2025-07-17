@@ -9,7 +9,7 @@
   []
   (shadow-server/start!)
   (shadow/watch :app)
-  (shadow/watch :app-ui)
+  (shadow/watch :ui)
   (shadow/watch :portfolio)
   ::started)
 
