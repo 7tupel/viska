@@ -13,6 +13,7 @@
                  :output-to   "resources/public/app/js/compiled/app.js"
                  :main        viska.app/main}
 
-  :portfolio    {:target      :browser
-                 :modules     {:main            {:init-fn viska.scenes/main}}
-                 :dev         {:output-dir      "resources/portfolio/public/js"}}}}
+  :portfolio    {:target            :browser
+                 :modules           {:main                {:init-fn viska.scenes/main}}
+                 :dev               {:output-dir          "resources/portfolio/public/js"}
+                 :compiler-options  {:portfolio/enabled?  false}}}}
