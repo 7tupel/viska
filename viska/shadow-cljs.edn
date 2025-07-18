@@ -15,5 +15,4 @@
 
   :portfolio    {:target            :browser
                  :modules           {:main                {:init-fn viska.scenes/main}}
-                 :dev               {:output-dir          "resources/portfolio/public/js"}
-                 :compiler-options  {:portfolio/enabled?  false}}}}
+                 :dev               {:output-dir          "resources/portfolio/public/js"}}}}
