@@ -1,0 +1,6 @@
+{:paths     ["src"]
+ :deps      {org.clojure/clojure                    {:mvn/version "1.12.0"}
+             aleph/aleph                            {:mvn/version "0.9.1"}
+             manifold/manifold                      {:mvn/version "0.4.3"}}
+ 
+ :aliases   {}}

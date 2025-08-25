@@ -1,6 +1,7 @@
 (ns user
   (:require
-   [clj-reload.core :as reload]))
+   [clj-reload.core :as reload]
+   [bling.core :refer [print-bling]]))
 
 ;;; Initialize development environment
 
@@ -14,6 +15,15 @@
   []
   ::started)
 
+(defn run-webapp
+  []
+  ;; watch and build electron app and browser code
+  (println "to be implemented..."))
+
+(defn run-portfolio
+  []
+  ;; watch and run portfolio
+  (println "to be implemented..."))
 
 ;;; Repl utilities
 
@@ -22,8 +32,22 @@
   []
   (reload/reload))
 
+(defn print-welcome
+  []
+  (println "")
+  (print-bling [:bold.blue "Welcome to the Development project for"] " " [:bold.italic.purple "Viska"])
+  (println)
+  (print-bling [:gray "The elfs are setting everything up to get you started."] "\n"))
+
+(defn print-ready
+  []
+  (print-bling [:gray "Everything is setup and ready for you"])
+  (print-bling [:gray "Happy Development"] " " [:yellow "🐱"] "\n"))
+
+
+
 ;;; Start Development
 
+(print-welcome)
 (start)
-(println "Everything is setup and ready for you")
-(println "Happy Development 🐱")
+(print-ready)

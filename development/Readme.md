@@ -8,7 +8,7 @@ To begin development run a Repl from this project.
 
 Run nrepl server:
 ```sh
-clj -M:nREPL -m nrepl.cmdline
+clj -M:nREPL -m nrepl.cmdline --middleware "[clj-commons.pretty.nrepl/wrap-pretty]"
 ```
 
 When you start the repl, the `user` namespace located in the _dev_ directory is automatically loaded. It will load and setup everything you need to run the code. 
