@@ -1,7 +1,8 @@
 (ns user
   (:require
    [clj-reload.core :as reload]
-   [bling.core :refer [print-bling]]))
+   [bling.core :refer [print-bling]]
+   [babashka.process :refer [process]]))
 
 ;;; Initialize development environment
 
@@ -10,20 +11,31 @@
 
 (require '[lazytest.repl])
 
+
+(defonce processes (atom {}))
+
+(defn- run-webapp
+  []
+  ;; watch and build electron app and browser code
+  (println "to be implemented..."))
+
+(defn- run-portfolio
+  []
+  ;; watch and run portfolio
+  (let [p (process {:dir "./../viska"} "npx shadow-cljs watch portfolio")])
+  (println "to be implemented..."))
+
+(defn run
+  [k &args]
+  (case k
+    :portfolio (run-portfolio)))
+
 (defn start
   "Start everything."
   []
   ::started)
 
-(defn run-webapp
-  []
-  ;; watch and build electron app and browser code
-  (println "to be implemented..."))
 
-(defn run-portfolio
-  []
-  ;; watch and run portfolio
-  (println "to be implemented..."))
 
 ;;; Repl utilities
 

@@ -1,0 +1,7 @@
+# temporary files and cach
+node_modules/
+.shadow-cljs
+
+# build artifacts
+resources/public/app-js/
+resources/public/portfolio-js/
