@@ -1,0 +1,2 @@
+{:paths   ["bb"]
+ :tasks   {nrepl            {:doc "Start Clojure nRepl server.", :task (exec 'tasks/nrepl)}}}

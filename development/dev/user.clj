@@ -25,6 +25,16 @@
   (let [p (process {:dir "./../viska"} "npx shadow-cljs watch portfolio")])
   (println "to be implemented..."))
 
+(comment 
+  (def p (process {:dir "./../desktop"} "npx shadow-cljs watch portfolio"))
+  
+  (def a (process {:dir "./../desktop"} "npx shadow-cljs watch app"))
+  
+ 
+  
+  p
+  run-portfolio)
+
 (defn run
   [k &args]
   (case k
